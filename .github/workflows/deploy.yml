@@ -1,0 +1,40 @@
+name: 🚀 Auto-Generate & Deploy Docs
+
+on:
+  push:
+    branches:
+      - main  # Change this if your default branch is different
+    paths:
+      - 'src/**/*.py'     # Only trigger when Python files in src/ change
+      - 'generate_docs.py'
+
+permissions:
+  contents: write
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: 🔐 Load environment variables
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: echo "GROQ_API_KEY=${{ secrets.GROQ_API_KEY }}" >> $GITHUB_ENV
+
+      - name: 📄 Generate documentation using Groq API
+        run: python generate_docs.py
+
+      - name: 🚀 Deploy to GitHub Pages
+        run: mkdocs gh-deploy --force --no-input

@@ -1,0 +1,14 @@
+site_name: Auto Docs
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: teal
+    accent: deep purple
+  font:
+    text: Roboto
+    code: Roboto Mono
+nav:
+- Home: index.md
+- Generated Docs:
+  - Check Even Odd: generated/check_even_odd.md
