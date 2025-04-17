@@ -12,6 +12,8 @@
         <link rel="prev" href="../..">
       
       
+        <link rel="next" href="../hello/">
+      
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
@@ -288,6 +290,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hello/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hello
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -330,24 +355,35 @@
 
 
 <h1 id="documentation-for-check_even_oddpy">Documentation for <code>check_even_odd.py</code></h1>
-<p>Here is the generated documentation in Markdown format:</p>
-<h1 id="checking-even-or-odd"><strong>Checking Even or Odd</strong></h1>
-<p>This program checks whether a given number is even or odd.</p>
-<h3 id="main-program"><code>Main Program</code></h3>
-<h4 id="purpose">Purpose</h4>
-<p>The main program prompts the user to enter a number, then determines whether the number is even or odd, and prints the result.</p>
-<h4 id="how-it-works">How it Works</h4>
-<p>The program uses the modulo operator (<code>%</code>) to check if the remainder of the number divided by 2 is 0. If the remainder is 0, the number is even; otherwise, it's odd.</p>
-<h4 id="parameters">Parameters</h4>
-<p>None</p>
-<h4 id="return-value">Return Value</h4>
-<p>None</p>
-<h4 id="side-effects">Side Effects</h4>
+<h1 id="even_or_odd-program"><code>even_or_odd</code> Program</h1>
+<p>=====================</p>
+<p>This program checks whether a user-provided number is even or odd.</p>
+<h2 id="main-function"><code>main</code> Function</h2>
+<h3 id="purpose">Purpose</h3>
+<p>The <code>main</code> function prompts the user to enter a number and determines whether it is even or odd.</p>
+<h3 id="parameters">Parameters</h3>
+<ul>
+<li>None</li>
+</ul>
+<h3 id="return-value">Return Value</h3>
+<ul>
+<li>None</li>
+</ul>
+<h3 id="side-effects">Side Effects</h3>
 <ul>
 <li>Prints a message to the console indicating whether the number is even or odd.</li>
 </ul>
-<p><strong>Note</strong>: This program does not have any reusable functions or classes, so there is no need to document individual components. The entire program is a simple, self-contained script.</p>
-<p>I hope this meets your requirements! Let me know if you have any further requests.</p>
+<h3 id="code">Code</h3>
+<pre><code class="language-python"># Ask the user for a number
+num = int(input(&quot;Enter a number: &quot;))
+
+# Check if the number is even or odd
+if num % 2 == 0:
+    print(&quot;The number is even.&quot;)
+else:
+    print(&quot;The number is odd.&quot;)
+</code></pre>
+<p>Note: This program does not have a defined <code>main</code> function, but rather a sequence of statements that are executed when the script is run. The above documentation is provided for clarity and convenience.</p>
 
 
 
