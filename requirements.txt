@@ -1,5 +1,3 @@
 requests
 python-dotenv
 PyYAML
-mkdocs
-mkdocs-material

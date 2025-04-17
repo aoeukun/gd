@@ -1,36 +1,38 @@
 # Documentation for `check_even_odd.py`
 
-# `even_or_odd` Program
-=====================
+# Even or Odd Checker
+======================
 
-This program checks whether a user-provided number is even or odd.
+This is a simple program that checks whether a given number is even or odd.
 
-## `main` Function
-### Purpose
+### Usage
 
-The `main` function prompts the user to enter a number and determines whether it is even or odd.
+To use this program, simply run it and follow the prompt to enter a number. The program will then print out whether the number is even or odd.
 
-### Parameters
+### Code Walkthrough
+-------------------
 
-* None
-
-### Return Value
-
-* None
-
-### Side Effects
-
-* Prints a message to the console indicating whether the number is even or odd.
-
-### Code
+### Main Program
 ```python
-# Ask the user for a number
 num = int(input("Enter a number: "))
-
-# Check if the number is even or odd
 if num % 2 == 0:
     print("The number is even.")
 else:
     print("The number is odd.")
 ```
-Note: This program does not have a defined `main` function, but rather a sequence of statements that are executed when the script is run. The above documentation is provided for clarity and convenience.
+
+#### Description
+
+This program consists of a single code block that performs the following tasks:
+
+* Asks the user to enter a number using the `input` function.
+* Converts the input to an integer using the `int` function.
+* Checks whether the number is even by using the modulus operator (`%`). If the remainder of the number divided by 2 is 0, then the number is even.
+* Prints out a message indicating whether the number is even or odd.
+
+#### Notes
+
+* This program does not handle errors or invalid inputs. For example, if the user enters a non-numeric value, the program will raise a `ValueError`.
+* This program does not provide any return value or output that can be used by other programs. It simply prints out a message to the console.
+
+There are no functions or classes in this code, so there is no additional documentation to provide.

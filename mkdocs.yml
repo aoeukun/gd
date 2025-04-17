@@ -12,4 +12,5 @@ nav:
 - Home: index.md
 - Generated Docs:
   - Check Even Odd: generated/check_even_odd.md
+  - Generate Docs: generated/generate_docs.md
   - Hello: generated/hello.md
