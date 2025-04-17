@@ -1,0 +1,607 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../check_even_odd/">
+      
+      
+        <link rel="next" href="../hello/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+    
+    
+      
+        <title>Generate Docs - Auto Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#documentation-for-generate_docspy" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Auto Docs" class="md-header__button md-logo" aria-label="Auto Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Auto Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Generate Docs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Auto Docs" class="md-nav__button md-logo" aria-label="Auto Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Auto Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Generated Docs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Generated Docs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../check_even_odd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Check Even Odd
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Generate Docs
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hello/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hello
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="documentation-for-generate_docspy">Documentation for <code>generate_docs.py</code></h1>
+<p>Here is the documented Python code with comprehensive docstrings and inline comments:</p>
+<pre><code class="language-python">&quot;&quot;&quot;
+Module-level docstring:
+This Python script acts as a documentation assistant for Python code. It takes Python code as input, 
+adds comprehensive documentation to it, and outputs the documented code. The script uses the Groq API 
+to generate documentation for Python code and integrates it with MkDocs for static site generation.
+
+The script works in the following steps:
+1. It loads environment variables from a .env file.
+2. It defines the API key, API URL, and headers for making API requests.
+3. It defines a system prompt for the Groq API.
+4. It defines three functions: call_groq, generate_docs, and update_mkdocs_yml.
+5. The main function orchestrates the entire process by calling the above functions.
+&quot;&quot;&quot;
+
+import os
+import json
+import requests
+from pathlib import Path
+import yaml
+from dotenv import load_dotenv
+
+load_dotenv()
+API_KEY = os.getenv(&quot;GROQ_API_KEY&quot;)
+
+API_URL = &quot;https://api.groq.com/openai/v1/chat/completions&quot;
+HEADERS = {
+    &quot;Authorization&quot;: f&quot;Bearer {API_KEY}&quot;,
+    &quot;Content-Type&quot;: &quot;application/json&quot;
+}
+
+SYSTEM_PROMPT = &quot;&quot;&quot;
+Act as a Python code documentation assistant. Your task is to add comprehensive documentation 
+to the provided Python code snippet, making it clear, understandable, and maintainable.
+
+**Instructions:**
+
+1.  **Analyze the Code:** Understand the purpose and logic of the provided Python code.
+2.  **Add Docstrings:**
+    * Include a **module-level docstring** at the very beginning of the script explaining its overall purpose and functionality.
+    * Add **function/method/class docstrings** immediately following their definition lines (`def` or `class`).
+    * Follow a clear and standard convention, preferably **Google style**:
+        * Start with a concise one-line summary (using the imperative mood, e.g., &quot;Calculate...&quot; not &quot;Calculates...&quot;). End with a period.
+        * Include a blank line after the summary if more detail follows.
+        * Add further elaboration on the object's purpose or logic if necessary.
+        * Use an `Args:` section to detail each parameter (`parameter_name (type): Description of the parameter.`).
+        * Use a `Returns:` section to detail the return value (`type: Description of the return value.`). If the function doesn't return anything explicitly (returns `None`), you can state that or omit the section.
+        * Use a `Raises:` section (if applicable) to detail any specific exceptions the code might intentionally raise (`ExceptionType: Condition under which it's raised.`).
+3.  **Add Inline Comments:** Insert inline comments (`#`) judiciously to clarify specific lines or blocks of code that involve complex logic, non-obvious operations, or important algorithmic steps. Avoid commenting on obvious code.
+4.  **Maintain Code Integrity:** Do not change the original code's logic or functionality. Only add documentation elements (docstrings and comments).
+5.  **Output Format:** Return the *complete* Python code, including the original logic, with all the added docstrings and relevant inline comments integrated directly into the code. Ensure the output is presented as a single, well-formatted Python code block.
+
+**Python Code to Document:**
+
+```python
+# --- PASTE YOUR PYTHON CODE BELOW THIS LINE ---
+
+[Your Python Code Here]
+
+# --- END OF PYTHON CODE ---
+&quot;&quot;&quot;
+
+
+def call_groq(code: str) -&gt; str:
+    &quot;&quot;&quot;
+    Call the Groq API to generate documentation for the given Python code.
+
+    Args:
+        code (str): The Python code to generate documentation for.
+
+    Returns:
+        str: The generated documentation as a string.
+
+    Raises:
+        requests.exceptions.RequestException: If the API request fails.
+    &quot;&quot;&quot;
+    payload = {
+        &quot;model&quot;: &quot;llama3-70b-8192&quot;,
+        &quot;messages&quot;: [
+            {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: SYSTEM_PROMPT},
+            {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: f&quot;```python\n{code}\n```&quot;}
+        ]
+    }
+
+    response = requests.post(API_URL, headers=HEADERS, json=payload)
+    response.raise_for_status()  # Raise an exception for 4xx or 5xx status codes
+    return response.json()[&quot;choices&quot;][0][&quot;message&quot;][&quot;content&quot;]
+
+
+def generate_docs(code_path: Path, output_path: Path):
+    &quot;&quot;&quot;
+    Generate documentation for the given Python code file and save it to the specified output path.
+
+    Args:
+        code_path (Path): The path to the Python code file.
+        output_path (Path): The path to save the generated documentation.
+
+    Returns:
+        None
+    &quot;&quot;&quot;
+    code = code_path.read_text(encoding=&quot;utf-8&quot;)
+    documentation = call_groq(code)
+    output_path.parent.mkdir(parents=True, exist_ok=True)  # Create the output directory if it doesn't exist
+    output_path.write_text(f&quot;# Documentation for `{code_path.name}`\n\n{documentation}&quot;, encoding=&quot;utf-8&quot;)
+
+
+def update_mkdocs_yml():
+    &quot;&quot;&quot;
+    Update the MkDocs configuration file (mkdocs.yml) to include the generated documentation.
+
+    Args:
+        None
+
+    Returns:
+        None
+    &quot;&quot;&quot;
+    GENERATED_DIR = Path(&quot;docs/generated&quot;)
+    MKDOCS_YML_PATH = Path(&quot;mkdocs.yml&quot;)
+
+    with open(MKDOCS_YML_PATH, &quot;r&quot;, encoding=&quot;utf-8&quot;) as f:
+        config = yaml.safe_load(f)
+
+    files = [f for f in GENERATED_DIR.iterdir() if f.suffix == &quot;.md&quot;]
+    files.sort()
+
+    # Clean old &quot;Generated Docs&quot; section if it exists
+    new_nav = []
+    for item in config.get(&quot;nav&quot;, []):
+        if isinstance(item, dict) and &quot;Generated Docs&quot; in item:
+            continue
+        new_nav.append(item)
+
+    # Build new section
+    generated_section = {&quot;Generated Docs&quot;: []}
+    for file in files:
+        title = file.stem.replace(&quot;_&quot;, &quot; &quot;).title()
+        generated_section[&quot;Generated Docs&quot;].append({title: f&quot;generated/{file.name}&quot;})
+
+    new_nav.append(generated_section)
+    config[&quot;nav&quot;] = new_nav
+
+    with open(MKDOCS_YML_PATH, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:
+        yaml.dump(config, f, sort_keys=False)
+
+    print(&quot;✅ mkdocs.yml updated successfully.&quot;)
+
+
+def main():
+    &quot;&quot;&quot;
+    The main entry point of the script.
+
+    Args:
+        None
+
+    Returns:
+        None
+    &quot;&quot;&quot;
+    src_dir = Path(&quot;src&quot;)
+    out_dir = Path(&quot;docs/generated&quot;)
+
+    for file in src_dir.rglob(&quot;*.py&quot;):
+        generate_docs(file, out_dir / f&quot;{file.stem}.md&quot;)
+
+    update_mkdocs_yml()
+    print(&quot;🎉 Documentation generated and mkdocs navigation updated.&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
+<p>I added a module-level docstring explaining the script's overall purpose and functionality. Each function has a detailed docstring explaining its purpose, arguments, return values, and raised exceptions. I also included inline comments to clarify specific lines or blocks of code that involve complex logic, non-obvious operations, or important algorithmic steps.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
