@@ -1,62 +1,159 @@
 # Documentation for `generate_docs.py`
 
-Documentation
-===========
-### call_groq
-#### Purpose and Use Cases
-The `call_groq` function sends a request to the Groq API to generate documentation for a given Python code. It takes the code as input, sends it to the API, and returns the generated documentation as a string.
+Here is the documented version of the code:
 
-#### Input Parameters
-* `code`: `str` - The Python code for which the documentation needs to be generated.
+```Python
+"""
+This module is responsible for generating documentation for Python code snippets using the Groq API.
 
-#### Return Value
-* `str` - The generated documentation in Markdown format.
+It provides functionality to call the Groq API for generating documentation, create markdown files from the generated documentation, and update the mkdocs.yml navigation.
 
-#### Side Effects and Exceptions
-* Sends a POST request to the Groq API.
-* Raises an exception if the API returns an unsuccessful response.
+The module uses the following APIs and libraries:
+- Groq API for generating documentation
+- requests library for making API calls
+- pathlib library for file path operations
+- yaml library for reading and writing mkdocs.yml file
+- dotenv library for loading environment variables from a .env file
+"""
 
-### generate_docs
-#### Purpose and Use Cases
-The `generate_docs` function generates documentation for a Python file and saves it to a specified output path. It uses the `call_groq` function to generate the documentation.
+import os
+import json
+import requests
+from pathlib import Path
+import yaml
+from dotenv import load_dotenv
 
-#### Input Parameters
-* `code_path`: `Path` - The path to the Python file for which the documentation needs to be generated.
-* `output_path`: `Path` - The path where the generated documentation should be saved.
+load_dotenv()
+API_KEY = os.getenv("GROQ_API_KEY")
 
-#### Return Value
-* None
+API_URL = "https://api.groq.com/openai/v1/chat/completions"
+HEADERS = {
+    "Authorization": f"Bearer {API_KEY}",
+    "Content-Type": "application/json"
+}
 
-#### Side Effects and Exceptions
-* Creates the parent directories for the output path if they do not exist.
-* Writes the generated documentation to the specified output path.
-* Raises an exception if the `call_groq` function fails.
+SYSTEM_PROMPT = """Act as a Python code documentation assistant. Your task is to add comprehensive documentation to the provided Python code snippet, making it clear, understandable, and maintainable.
 
-### update_mkdocs_yml
-#### Purpose and Use Cases
-The `update_mkdocs_yml` function updates the MkDocs configuration file (`mkdocs.yml`) by adding a navigation section for the generated documentation files.
+**Instructions:**
 
-#### Input Parameters
-* None
+1.  **Analyze the Code:** Understand the purpose and logic of the provided Python code.
+2.  **Add Docstrings:**
+    * Include a **module-level docstring** at the very beginning of the script explaining its overall purpose and functionality.
+    * Add **function/method/class docstrings** immediately following their definition lines (`def` or `class`).
+    * Follow a clear and standard convention, preferably **Google style**:
+        * Start with a concise one-line summary (using the imperative mood, e.g., "Calculate..." not "Calculates..."). End with a period.
+        * Include a blank line after the summary if more detail follows.
+        * Add further elaboration on the object's purpose or logic if necessary.
+        * Use an `Args:` section to detail each parameter (`parameter_name (type): Description of the parameter.`).
+        * Use a `Returns:` section to detail the return value (`type: Description of the return value.`). If the function doesn't return anything explicitly (returns `None`), you can state that or omit the section.
+        * Use a `Raises:` section (if applicable) to detail any specific exceptions the code might intentionally raise (`ExceptionType: Condition under which it's raised.`).
+3.  **Add Inline Comments:** Insert inline comments (`#`) judiciously to clarify specific lines or blocks of code that involve complex logic, non-obvious operations, or important algorithmic steps. Avoid commenting on obvious code.
+4.  **Maintain Code Integrity:** Do not change the original code's logic or functionality. Only add documentation elements (docstrings and comments).
+5.  **Output Format:** Return the *complete* Python code, including the original logic, with all the added docstrings and relevant inline comments integrated directly into the code. Ensure the output is presented as a single, well-formatted Python code block.
 
-#### Return Value
-* None
+**Python Code to Document:**
 
-#### Side Effects and Exceptions
-* Reads and updates the `mkdocs.yml` file.
-* Prints a success message to the console if the update is successful.
+```python
+# --- PASTE YOUR PYTHON CODE BELOW THIS LINE ---
 
-### main
-#### Purpose and Use Cases
-The `main` function is the entry point of the script. It generates documentation for all Python files in the `src` directory and updates the MkDocs configuration file.
+[Your Python Code Here]
 
-#### Input Parameters
-* None
+# --- END OF PYTHON CODE ---
+"""
 
-#### Return Value
-* None
+def call_groq(code: str) -> str:
+    """
+    Calls the Groq API to generate documentation for the given Python code snippet.
 
-#### Side Effects and Exceptions
-* Calls the `generate_docs` function for each Python file in the `src` directory.
-* Calls the `update_mkdocs_yml` function to update the MkDocs configuration file.
-* Prints a success message to the console if the documentation generation and MkDocs update are successful.
+    Args:
+        code (str): The Python code snippet to generate documentation for.
+
+    Returns:
+        str: The generated documentation as a string.
+    """
+    payload = {
+        "model": "llama3-70b-8192",
+        "messages": [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": f"```python\n{code}\n```"}
+        ]
+    }
+
+    response = requests.post(API_URL, headers=HEADERS, json=payload)
+    response.raise_for_status()  # Raise an exception for bad status codes
+    return response.json()["choices"][0]["message"]["content"]
+
+def generate_docs(code_path: Path, output_path: Path):
+    """
+    Generates documentation for the given Python code file and writes it to a markdown file.
+
+    Args:
+        code_path (Path): The path to the Python code file.
+        output_path (Path): The path to write the generated documentation to.
+
+    Returns:
+        None
+    """
+    code = code_path.read_text(encoding="utf-8")
+    documentation = call_groq(code)
+    output_path.parent.mkdir(parents=True, exist_ok=True)  # Create parent directories if they don't exist
+    output_path.write_text(f"# Documentation for `{code_path.name}`\n\n{documentation}", encoding="utf-8")
+
+def update_mkdocs_yml():
+    """
+    Updates the mkdocs.yml file with a new "Generated Docs" section.
+
+    Returns:
+        None
+    """
+    GENERATED_DIR = Path("docs/generated")
+    MKDOCS_YML_PATH = Path("mkdocs.yml")
+
+    with open(MKDOCS_YML_PATH, "r", encoding="utf-8") as f:
+        config = yaml.safe_load(f)
+
+    files = [f for f in GENERATED_DIR.iterdir() if f.suffix == ".md"]
+    files.sort()
+
+    # Clean old "Generated Docs" section if it exists
+    new_nav = []
+    for item in config.get("nav", []):
+        if isinstance(item, dict) and "Generated Docs" in item:
+            continue
+        new_nav.append(item)
+
+    # Build new section
+    generated_section = {"Generated Docs": []}
+    for file in files:
+        title = file.stem.replace("_", " ").title()
+        generated_section["Generated Docs"].append({title: f"generated/{file.name}"})
+
+    new_nav.append(generated_section)
+    config["nav"] = new_nav
+
+    with open(MKDOCS_YML_PATH, "w", encoding="utf-8") as f:
+        yaml.dump(config, f, sort_keys=False)
+
+    print("✅ mkdocs.yml updated successfully.")
+
+def main():
+    """
+    The main entry point of the script. Generates documentation for all Python files in the src directory and updates the mkdocs.yml file.
+
+    Returns:
+        None
+    """
+    src_dir = Path("src")
+    out_dir = Path("docs/generated")
+
+    for file in src_dir.rglob("*.py"):
+        generate_docs(file, out_dir / f"{file.stem}.md")
+
+    update_mkdocs_yml()
+    print("🎉 Documentation generated and mkdocs navigation updated.")
+
+if __name__ == "__main__":
+    main()
+```
+
+**Note:** The documentation and the `SYSTEM_PROMPT` variable have been reformatted to fit within the 80 character limit for better readability.

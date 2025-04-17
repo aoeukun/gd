@@ -14,18 +14,33 @@ HEADERS = {
     "Content-Type": "application/json"
 }
 
-SYSTEM_PROMPT = """You are an expert technical writer and software engineer.
+SYSTEM_PROMPT = """Act as a Python code documentation assistant. Your task is to add comprehensive documentation to the provided Python code snippet, making it clear, understandable, and maintainable.
 
-Given the following Python code, generate clear, concise, and professional documentation in Markdown format.
+**Instructions:**
 
-- For each function or class:
-  - Explain what it does, its purpose, and use cases
-  - Include input parameters with types and descriptions
-  - Describe the return value with type and meaning
-  - Mention any side effects, exceptions, or special behaviors
-  - Write in a friendly, human-readable tone for developers
-  - Format the output using Markdown with proper headers, bullet points, and code blocks
-  - If there is no function or class, don't generate anything.
+1.  **Analyze the Code:** Understand the purpose and logic of the provided Python code.
+2.  **Add Docstrings:**
+    * Include a **module-level docstring** at the very beginning of the script explaining its overall purpose and functionality.
+    * Add **function/method/class docstrings** immediately following their definition lines (`def` or `class`).
+    * Follow a clear and standard convention, preferably **Google style**:
+        * Start with a concise one-line summary (using the imperative mood, e.g., "Calculate..." not "Calculates..."). End with a period.
+        * Include a blank line after the summary if more detail follows.
+        * Add further elaboration on the object's purpose or logic if necessary.
+        * Use an `Args:` section to detail each parameter (`parameter_name (type): Description of the parameter.`).
+        * Use a `Returns:` section to detail the return value (`type: Description of the return value.`). If the function doesn't return anything explicitly (returns `None`), you can state that or omit the section.
+        * Use a `Raises:` section (if applicable) to detail any specific exceptions the code might intentionally raise (`ExceptionType: Condition under which it's raised.`).
+3.  **Add Inline Comments:** Insert inline comments (`#`) judiciously to clarify specific lines or blocks of code that involve complex logic, non-obvious operations, or important algorithmic steps. Avoid commenting on obvious code.
+4.  **Maintain Code Integrity:** Do not change the original code's logic or functionality. Only add documentation elements (docstrings and comments).
+5.  **Output Format:** Return the *complete* Python code, including the original logic, with all the added docstrings and relevant inline comments integrated directly into the code. Ensure the output is presented as a single, well-formatted Python code block.
+
+**Python Code to Document:**
+
+```python
+# --- PASTE YOUR PYTHON CODE BELOW THIS LINE ---
+
+[Your Python Code Here]
+
+# --- END OF PYTHON CODE ---
 """
 
 def call_groq(code: str) -> str:
